@@ -1,0 +1,81 @@
+@page "/"
+@using Name_Gender_API.Data
+@using Newtonsoft.Json.Linq
+@using MudBlazor
+
+<MudThemeProvider/>
+
+@inject IGenderNameService _iGenderNameService
+
+
+<div class="container">
+    <MudLayout>
+        <MudGrid>
+            <MudText class="container">Geben Sie einen Namen ein und erfahren Sie das hoffentlich auch passende Geschlecht.</MudText>
+            <MudTextField T="string" class="container"  @bind-value="InputValue" Variant="Variant.Outlined"></MudTextField>
+            <MudButton type="button" class="container btn btn-info" Style="width: fit-content;"
+                    @onclick="(() => { GettingGenderFromJson(InputValue); })">
+                Determine
+            </MudButton>
+            @if (_display)
+            {
+                <MudCard class="container card" style="width: 18rem; padding: 10px;">
+                    <div class="container card-body">
+                        @if ((GettingGenderFromJson(InputValue) == false))
+                        {
+                            <p>Ihre Eingabe konnte nicht verarbeitet werden. Geben Sie einen anderen Namen ein.</p>
+                        }
+                        else
+                        {
+                            <h5 class="container card-title">Ihr eingegebener Name.: @InstanceOnWebsite.Name</h5>
+                            <p class="container card-text">Das Geschlecht.: @InstanceOnWebsite.Gender</p>
+                        }
+                    </div>
+                </MudCard>
+            }
+        </MudGrid>
+    </MudLayout>
+</div>
+
+
+
+@code
+{
+
+    string? InputValue { get; set; }
+    private bool _display;
+
+    ServerResponse? InstanceOnWebsite { get; set; }
+
+    private bool GettingGenderFromJson(string name)
+    {
+        InstanceOnWebsite = new ServerResponse();
+        DisplayOfValues();
+
+        var task = _iGenderNameService.DetermineNameRequest(name);
+        var res = task.Result;
+        JObject jsondata = JObject.Parse(res);
+        var gender = jsondata.SelectToken("gender");
+        if (gender == null)
+        {
+            return false;
+        }
+        else
+        {
+            var iwas = gender.ToString();
+            if (iwas == "null")
+            {
+                return false;
+            }
+            InstanceOnWebsite.Gender = iwas;
+            InstanceOnWebsite.Name = name;
+            return true;
+        }
+    }
+
+    private void DisplayOfValues()
+    {
+        _display = !_display;
+    }
+    
+}
