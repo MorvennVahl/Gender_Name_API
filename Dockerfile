@@ -1,4 +1,5 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+ RUN echo "Image build"
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
