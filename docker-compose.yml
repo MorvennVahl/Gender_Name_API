@@ -5,7 +5,7 @@ services:
   web:
     image: nginx
     ports:
-      - "9090:90"
+      - 9090:90
     
   
     
