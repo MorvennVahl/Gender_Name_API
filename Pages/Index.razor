@@ -62,12 +62,12 @@
         }
         else
         {
-            var iwas = gender.ToString();
-            if (iwas == "null")
+            var jsonString = gender.ToString();
+            if (jsonString == "null")
             {
                 return false;
             }
-            InstanceOnWebsite.Gender = iwas;
+            InstanceOnWebsite.Gender = jsonString;
             InstanceOnWebsite.Name = name;
             return true;
         }
