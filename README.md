@@ -19,7 +19,15 @@ How to run the Program.:
           (it should automatically create a webserver and host on a localhost on your pc)
         - now copy the first https adress from the command line prompt and paste it in your browser (Chrome, Firefox etc.)
   
- Have fun :D!
+or for simplyfiying everything.: with docker.
+  after downloading, you have to have installed the latest version of docker. 
+  open the unzipped folder and write cmd into the Adress bar a Command line prompt should open. 
+  then you type.: docker run -d -p 8080:80 name_gender_api
+  into the console. press enter and go to your webbrowser. type.: localhost:8080 
+  into the search bar and the program should start without problems. 
+  
+  https://docs.docker.com/desktop/windows/install/
+  (the link for docker desktop /Windows)
   
 ----------------------------
   
@@ -33,6 +41,18 @@ How to run the Program.:
       - go to the created UnitTest1.cs class that has been automatically generated and add.: using Name_Gender_API.Data; 
         to the Project. it now can access Classes and Functions declared.
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   Have fun and stay safe!
   
   
