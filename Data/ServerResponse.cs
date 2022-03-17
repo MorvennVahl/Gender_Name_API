@@ -5,8 +5,10 @@ namespace Name_Gender_API.Data;
 
 public class ServerResponse
 {
+    [NotNull]
     public string? Name { get; set; }
     public string? Q { get; set; }
+    [NotNull]
     public string? Gender { get; set; }
     public int? Totalnames { get; set; }
     public string? Country { get; set; }
