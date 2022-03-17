@@ -44,7 +44,7 @@ or for simplyfiying everything.: with docker.
 
   A simple Test could be.:
   
-  '''
+  ```
   using System.Collections.Generic;
   using Bunit;
   using Microsoft.Extensions.DependencyInjection;
@@ -81,7 +81,7 @@ or for simplyfiying everything.: with docker.
         Assert.IsTrue((name != null) || (gender != null));
     }
   }
-  '''
+  ```
   
   which can easily be pasted into the testproject and run.
   Have fun and stay safe!
