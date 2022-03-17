@@ -42,7 +42,7 @@ or for simplyfiying everything.: with docker.
       - go to the created UnitTest1.cs class that has been automatically generated and add.: using Name_Gender_API.Data; 
         to the Project. it now can access Classes and Functions declared.
 
-  A simple Test could be.:
+  A very simple Test could be.:
   
   ```
   using System.Collections.Generic;
